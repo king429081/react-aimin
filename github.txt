@@ -1,0 +1,17 @@
+用户  1142429081@qq.com 
+密码  11429081kong
+
+git add *    提交代码到工作区
+git commit -m "xxx"   形成xxx版本缓存区
+git remote origin url   将本地仓库与远程仓库进行连接
+git push origin master  将缓存区的代码加载到远程仓库
+
+git clone url   克隆远程仓库代码
+git pull        已经客隆过的远程仓库，获取更新的内容
+
+git log   查看版本
+git branch 查看分支
+git branch xx 创建xx分支
+git checkout xx 选择xx分支
+
+在分支上可以进行和主分支相同的操作，将master换成xx

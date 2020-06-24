@@ -11,42 +11,42 @@ body {
   width: 100%;
   height: 100%;
 }
-.admin .login {
+.admin .login_index {
   width: 100%;
   height: 100%;
   margin: 0 auto;
   background-color: #f5456f;
 }
-.admin .login .header {
+.admin .login_index .header {
   width: 100%;
   height: 50px;
   background: #f012f0;
   display: flex;
   align-items: center;
 }
-.admin .login .header h3 {
+.admin .login_index .header h3 {
   color: #fff;
   margin-left: 10px;
 }
-.admin .login .useradmin {
+.admin .login_index .useradmin {
   width: 400px;
   height: 300px;
   background-color: #fff;
   margin: 0 auto;
   margin-top: 10px;
 }
-.admin .login .useradmin h3 {
+.admin .login_index .useradmin h3 {
   text-align: center;
   padding-top: 10px;
   font-weight: bold;
   font-size: 22px;
 }
-.admin .login .useradmin .formadmin {
+.admin .login_index .useradmin .formadmin {
   width: 300px;
   margin: 0 auto;
   margin-top: 40px;
 }
-.admin .login .useradmin .formadmin .login-form-button {
+.admin .login_index .useradmin .formadmin .login-form-button {
   width: 300px;
   margin-top: 20px;
   background-color: #ff5522;

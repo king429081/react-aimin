@@ -1,11 +1,9 @@
 import React from 'react'
-
-
 export default class  Admin extends React.Component{
     render(){
         return(
-            <div>
-                123
+            <div className="admin_index">
+                <h1>123</h1>
             </div>
         )
     }
