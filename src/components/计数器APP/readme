@@ -1,0 +1,47 @@
+计数器
+actions文件夹下
+    放的是create-actions的操作
+            export function decrement(){
+                return{
+                    type:"DECREMENT"，
+    还可以传入数据   data：value
+                }
+            }
+
+
+components文件夹
+    放笨拙组件
+        分为三个笨组件：
+            Show 展示
+            Add  加一
+            Sub  减一
+
+containers文件夹
+    机智组件
+        目标：
+            将一个普通的笨拙组件转换为机智组件
+            即Counter转变为机智组件
+
+
+reducers文件夹
+    仓库管理员
+        根据状态的不同，可以分为不同的管理员，但是他们需要一个头头，管理整个仓库
+
+store文件夹
+    是仓库，包括初始状态，和仓库 需要管理员管理和初始化仓库
+
+
+================================================
+const reducer = combineReducers({
+    counter
+})
+
+    combineReducers  可以方便的将分开的管理员进行合并，
+    使用时需引入import { combineReducers } from "redux"
+
+=============================================
+connect :可以将一个普通组件转化为智能组件
+    方法为  connect(mapStateToProps,mapDispatchToProps)(普通组件)
+    mapStateToProps(state):将仓库中的数据状态映射为普通组件的prpos
+    mapDispatchToProps(dispatch):将组件的参数映射到仓库的action上
+        具体操作时：使用bindActionCreators(actionCreators,dispatch)

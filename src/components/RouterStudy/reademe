@@ -1,0 +1,16 @@
+路由学习
+    在入口文件index.js中引入--------- import {BrowserRouter as Router} from 'react-router-dom' 
+    当作一个组件将App组件抱起来 -----  <Router><App/></Router>
+    在组件中引入   ------------------ import {Route,Link,Switch,Redirect} from 'react-router-dom'
+        Route：<Route path="/" exact component={Home}></Route>
+            用来书写路由规则
+            还可以传递参数      <Route path="/detail/:id" component={Detail}></Route>   
+                在detail组件中通过   this.props.match.params.id来获取id
+                <Link to="/detail/1">来设置参数
+
+        Link：<Link to="/list"> 
+            作用相当于一个a标签
+        Switch  Redirect 两个一般都在一起用  起到重定向作用
+            <Switch>
+                    <Redirect from="/cart" to="/"></Redirect>
+            </Switch>

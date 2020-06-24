@@ -1,0 +1,171 @@
+.ant-carousel .slick-slide {
+  text-align: center;
+  height: 160px;
+  line-height: 160px;
+  background: #364d79;
+  overflow: hidden;
+}
+.ant-carousel .slick-slide h3 {
+  color: #fff;
+}
+.headerBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2rem;
+}
+.headerBox .base {
+  font-size: 0;
+}
+.headerBox .base .time,
+.headerBox .base .title {
+  display: inline-block;
+  padding: 0 0.3rem;
+}
+.headerBox .base .time {
+  text-align: center;
+  font-size: 0.34rem;
+  font-weight: bold;
+  vertical-align: middle;
+}
+.headerBox .base .time em {
+  display: block;
+  font-size: 0.24rem;
+  font-weight: normal;
+  font-style: normal;
+}
+.headerBox .base .title {
+  font-size: 0.4rem;
+  vertical-align: middle;
+  border-left: 0.02rem solid #aaa;
+}
+.headerBox .user {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: url("../../assets/images/timg.jpg") no-repeat center center;
+  background-size: 100% 100%;
+  overflow: hidden;
+}
+.headerBox .user img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.headerBox .user img[src=""] {
+  display: none;
+}
+.bannerBox {
+  height: 7.5rem;
+  background: #dddddd;
+}
+.bannerBox .van-swipe {
+  height: 100%;
+}
+.bannerBox .item {
+  display: block;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+.bannerBox .item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.bannerBox .item .desc {
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  padding: 0.3rem;
+  width: 100%;
+  height: 2rem;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.7);
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+}
+.bannerBox .item .desc p {
+  font-size: 0.4rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: bold;
+  line-height: 0.8rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.bannerBox .item .desc p:nth-child(2) {
+  font-size: 0.32rem;
+  font-weight: normal;
+  line-height: 0.6rem;
+}
+.van-skeleton {
+  margin-top: 0.4rem;
+}
+.newsBox {
+  padding: 0.2rem;
+}
+.newsBox .itemBox .time {
+  box-sizing: border-box;
+  position: relative;
+  height: 0.6rem;
+  line-height: 0.6rem;
+  padding-top: 0.285rem;
+}
+.newsBox .itemBox .time i {
+  display: block;
+  margin-left: 1.8rem;
+  height: 0.02rem;
+  background: #dddddd;
+}
+.newsBox .itemBox .time span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1.6rem;
+  text-align: center;
+  font-size: 0.3rem;
+  font-weight: normal;
+  color: #777777;
+}
+.newsBox .itemBox .content .item {
+  position: relative;
+  padding: 0.2rem 0;
+  min-height: 1.5rem;
+}
+.newsBox .itemBox .content .item a {
+  display: block;
+}
+.newsBox .itemBox .content .item .img {
+  position: absolute;
+  top: 0.2rem;
+  right: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.05rem;
+  background: #dddddd;
+  overflow: hidden;
+}
+.newsBox .itemBox .content .item .img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.05rem;
+}
+.newsBox .itemBox .content .item .con {
+  margin-right: 1.7rem;
+}
+.newsBox .itemBox .content .item .con h4,
+.newsBox .itemBox .content .item .con span {
+  display: block;
+  color: #000;
+  font-size: 0.32rem;
+  font-weight: normal;
+  line-height: 0.5rem;
+  max-height: 1rem;
+  overflow: hidden;
+}
+.newsBox .itemBox .content .item .con span {
+  color: #777777;
+  font-size: 0.28rem;
+}

@@ -1,0 +1,44 @@
+点击事件：onClick={()=>this.props}
+
+
+
+作用：将仓库的 状态，和方法 映射到一个组件中，
+且将组件中调用方法时的传参传到仓库中,都在props中
+    用法：
+        在入口文件夹：index.js，中使用Provider组件将App包起来，并将store传入：
+            <Provider store={store}><App /></Provider>
+        在组件中导出connect()();
+            后面的放组件，前面的放state和方法
+
+=======================
+仓库的运行：
+    在组件中触发了一个事件(action)，向上级传递，
+    
+    传递到actions册中，此时，
+    reducer会接管这个事件，并按着actions中的type进行相应的操作，
+    结果返回给仓库，
+reducer中的两个参数：
+    第一个与仓库链接，是原始的仓库中的state，
+    第二个是action手册链接，查看action中的type和接受事件传值
+    return 的值
+
+========================
+export defulat  暴漏出来的通过   import xxx from ''  引用
+export          暴漏出来的通过   import {xxx} from ''  引用 
+
+=========================
+异步的处理：
+    在action中暴露一个函数，里面放异步代码，并且dispatch() 同步action   
+        例如 ：  export function getstateAsync(){
+                    return function(dispatch,getState){
+                        const url = "xaxa"
+                        axios.get(url)
+                    }
+            }
+    因为action返回的是对象，但是这里的返回的是函数，
+    就需要中间件  applyMiddleware  来自redux的集中管理中间件，使中间件能过够依次执行
+    此时需要  import thunkMiddleware from 'redux-thunk'  中间件
+    const createStoreWithMiddleware = applyMiddleware(thunkMiddleware)(createStore)
+    let store = createStoreWithMiddleware(reducer,state)
+    使用方法
+=========================

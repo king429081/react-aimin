@@ -1,17 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux'
+import {BrowserRouter as Router} from 'react-router-dom' //路由的引入
 
+//import App from './components/App'
+import App from './components/todolist/App'
+import store from './components/todolist/store/index'
+//import App from './components/RouterStudy/App'   //路由组件入口
+//import App from './components/知乎日报/app'    //知乎日报的入口
+//import App from './components/ReduxStudy/App' // redux的粗暴用法
+//import store from './components/ReduxStudy/Redux/store' // redux的粗暴用法  仓库
+//import App from './components/计数器APP/app'
+//import store from './components/计数器APP/store/index'
+//import App from './components/sync应用-电影/app'
+//import store from './components/sync应用-电影/store/store'
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  //<Router><App/></Router>,     //路由使用的方法
+  //<App store={store} />,   //redux的粗暴用法
+  <Provider store={store}><App /></Provider>,
+  //<App></App>,
   document.getElementById('root')
 );
+// store.subscribe(()=>{
+//   ReactDOM.render(
+//     // <Router>
+//     //   <App store={store} />
+//     // </Router>,//路由使用的方法
+//     <App store={store} />,   
+//     document.getElementById('root')
+//   );
+// })//学习redux的粗暴用法
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
