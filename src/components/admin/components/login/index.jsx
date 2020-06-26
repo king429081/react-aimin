@@ -3,16 +3,22 @@ import './index/index.css'
 import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import {API_LOGIN} from '../api/index'
+import userMessage from '../../userMessge'
+import {saveUser,getUser,removeUser} from '../../localSAVE'
+import {Redirect} from 'react-router-dom'
 
 export default class Login extends React.Component {
     
     render() {
+        
+        
         const onFinish = values => {
-            console.log('Received values of form: ', values);
             API_LOGIN(values).then((res)=>{
-                console.log(res)
                 if(res.data.status==0){
-                    this.props.history.push('/')
+                    userMessage.user = res.data;
+                    console.log(userMessage.user,"内存")
+                    saveUser(res.data);
+                    this.props.history.push("/admin/home")
                 }else if(res.data.status==1){
                     alert(res.data.msg)
                 }
@@ -20,7 +26,12 @@ export default class Login extends React.Component {
                 console.log(err)
             })
           };
-    
+          let user = userMessage.user
+          console.log(user)
+          if(user && user.data._id){
+              this.props.history.push("/admin")
+              console.log("111")
+          }
         return (
             <div className="login_index">
                 <div className="header">
