@@ -7,4 +7,4 @@ export const API_GET_CATEGROY=(parentId)=>{return axios.get('/manage/category/li
 //添加分类
 export const API_ADD_LOGIN=(categoryName, parentId)=>{return axios.post('/manage/category/add',{categoryName, parentId})}
 //编辑分裂
-export const API_UPDATA_LOGIN=(categoryName, parentId)=>{return axios.post('//manage/category/update',{categoryName, parentId})}
+export const API_UPDATA_LOGIN=(categoryId, categoryName)=>{return axios.post('//manage/category/update',{categoryId, categoryName})}

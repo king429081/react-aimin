@@ -2,6 +2,8 @@ import React from "react"
 import { Table, Tag, Space, Button, Modal, Form, Input, Card } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { API_GET_CATEGROY, API_ADD_LOGIN, API_UPDATA_LOGIN } from '../../../api/index'
+import {Redirect,Link} from 'react-router-dom'
+import { render } from "@testing-library/react";
 export default class ShopIndex extends React.Component {
     state = {
         cartgroys: [],
@@ -13,9 +15,14 @@ export default class ShopIndex extends React.Component {
     componentDidMount() {
         this.getList("0")
     }
+    cancle=()=>{
+        this.setState({
+        visible: false,
+        editvisibility:false,
+        })
+    }
     //得到输入框内容
     onFinish = value => {
-        
           console.log(value)
           this.setState({
               visible: false,
@@ -49,7 +56,7 @@ export default class ShopIndex extends React.Component {
       };
       //编辑，拿到item
       edit_cart=(record)=>{
-        //console.log("...",record)
+        console.log("...",record._id)
         let records = record._id
         this.setState({
             records
@@ -62,12 +69,13 @@ export default class ShopIndex extends React.Component {
     //编辑
     onFinishEdit=(value)=>{
         console.log(this.state.records)
-        API_UPDATA_LOGIN(value.edit,this.state.records).then(res=>{
+        API_UPDATA_LOGIN(this.state.records,value.edit).then(res=>{
             console.log(res)
         }).catch(err=>{
             console.log(err)
         })
     }
+    //二级分类
     
     render() {
         const dataSource = [
@@ -78,7 +86,7 @@ export default class ShopIndex extends React.Component {
         const columns = [
             {
                 width: "500px",
-                title: '姓名',
+                title: '商品',
                 dataIndex: 'name',
                 key: 'name',
             },
@@ -88,7 +96,7 @@ export default class ShopIndex extends React.Component {
                 render: (record) => (
                     <Space size="middle">
                         <span onClick={()=>this.edit_cart(record)}><a >编辑分类</a></span>
-                        <span><a >查看二级分类</a></span>
+                        <span><Link to={{pathname: "/admin/secondshop",query:{name:record}}}>查看二级分类</Link></span>
                     </Space>
                 ),
             },
@@ -98,12 +106,12 @@ export default class ShopIndex extends React.Component {
             <div>
                 <Button type="primary" onClick={this.showModal} style={{ left: "650px" }}> <PlusOutlined />添加分类</Button>
                 <Table 
+                bordered
                 dataSource={this.state.cartgroys} 
                 columns={columns}
                  />
                 <Modal
                     visible={this.state.visible}
-                    onCancel={this.handleCancel}
                     footer={null}
                 >
                     <Card title="提交商品" bordered={false} style={{ width: "100%" }} visible={this.state.visible}>
@@ -116,7 +124,10 @@ export default class ShopIndex extends React.Component {
                         <Form.Item>
                             <Button type="primary" htmlType="submit" className="login-form-button" >
                                 提交
-                                </Button>
+                            </Button>、
+                            <Button type="primary"  className="login-form-button" onClick={this.cancle}>
+                                取消
+                            </Button>
                         </Form.Item>
                     </Form>
                 </Card>
@@ -137,6 +148,9 @@ export default class ShopIndex extends React.Component {
                             <Button type="primary" htmlType="submit" className="login-form-button" >
                                 修改
                                 </Button>
+                                <Button type="primary"  className="login-form-button" onClick={this.cancle}>
+                                取消
+                            </Button>
                         </Form.Item>
                     </Form>
                 </Card>

@@ -9,6 +9,7 @@ import UserAdmin from './items/UserAdmin'
 import OrderAdmin from './items/OrderAdmin'
 import ShopIndex from './items/shop/ShopIndex'
 import ChartControl from './items/phone/ChartControl'
+import SecondShopIndex from './items/shop/SecondShop'
 import Role from './items/Role'
 import userMessage from '../../userMessge'
 
@@ -34,9 +35,8 @@ export default class  Admin extends React.Component{
                         <LeftList></LeftList>
                     </Sider>
                     <Layout>
-                        <Header style={{backgroundColor:"#fff",padding:"0"}}>
                                 <Heard></Heard>
-                        </Header>
+                        
                         <Content>
                             {/* <ContentItem></ContentItem> */}
                             <Switch>
@@ -44,6 +44,7 @@ export default class  Admin extends React.Component{
                                 <Route path="/admin/user" component={UserAdmin}></Route>
                                 <Route path="/admin/chart" component={ChartControl}></Route>
                                 <Route path="/admin/shop" component={ShopIndex}></Route>
+                                <Route path="/admin/secondshop" component={SecondShopIndex}></Route>
                                 <Route path="/admin/order" component={OrderAdmin}></Route>
                                 <Route path="/admin/role" component={Role}></Route>
                                 <Redirect to="/admin/home"></Redirect>

@@ -1,7 +1,11 @@
 import axios from 'axios'
 import qs from 'qs'
 
-// axios.interceptors.request.use(config=>{
+
+
+//创建axios实例
+const service = axios.create({})
+//service/ axios.interceptors.request.use(config=>{
 //     //请求头拦截器，看看是否有token，除了登陆界面都需要
 //     let pathname = location.pathname;
 //     console.log("ajax拦截请求",pathname)
