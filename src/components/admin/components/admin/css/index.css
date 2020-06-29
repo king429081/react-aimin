@@ -15,29 +15,31 @@
   width: 100%;
   height: 100%;
 }
-.ant-layout-header {
-  width: 100%;
-}
-.ant-layout-header .heard_index {
+.heard_index {
   width: 100%;
   height: 64px;
 }
-.ant-layout-header .heard_index .heard_top {
+.heard_index .heard_top {
   height: 30px;
   border-bottom: 2px solid red;
   display: block;
 }
-.ant-layout-header .heard_index .heard_top h3 {
+.heard_index .heard_top h3 {
   font-weight: normal;
   font-size: 10px;
   height: 15px;
+  width: 50px;
+  float: left;
 }
-.ant-layout-header .heard_index .heard_bet h3 {
+.heard_index .heard_top .login-form-button {
+  float: right;
+}
+.heard_index .heard_bet h3 {
   float: left;
   height: 15px;
   font-size: 10px;
 }
-.ant-layout-header .heard_index .heard_bet .bet_right {
+.heard_index .heard_bet .bet_right {
   float: right;
   font-size: 10px;
 }

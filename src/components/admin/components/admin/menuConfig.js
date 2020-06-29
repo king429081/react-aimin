@@ -1,7 +1,7 @@
 const menuList = [
     {
       title: '首页', // 菜单标题名称
-      key: '/home', // 对应的path
+      key: '/admin/home', // 对应的path
       icon: 'home', // 图标名称
       isPublic: true, // 公开的
     },
@@ -12,12 +12,12 @@ const menuList = [
       children: [ // 子菜单列表
         {
           title: '品类管理',
-          key: '/category',
+          key: '/admin/category',
           icon: 'bars'
         },
         {
           title: '商品管理',
-          key: '/product',
+          key: '/admin/product',
           icon: 'tool'
         },
       ]
@@ -25,12 +25,12 @@ const menuList = [
   
     {
       title: '用户管理',
-      key: '/user',
+      key: '/admin/user',
       icon: 'user'
     },
     {
       title: '角色管理',
-      key: '/role',
+      key: '/admin/role',
       icon: 'safety',
     },
   

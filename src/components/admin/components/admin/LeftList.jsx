@@ -22,19 +22,21 @@ export default class LeftList extends React.Component {
             if (!item.children) {
                 //console.log(item.title)
                 return (
-                    <Menu.Item>{item.title}</Menu.Item>
-
+                    <Menu.Item><Link to={item.key}>{item.title}</Link> </Menu.Item>
                 )
             } else {
                 return (
                     <SubMenu title={item.title}>
-                        <Menu.Item>{item.title}</Menu.Item>
+                        
+                        {item.children.map(item=>{
+                            return(<Menu.Item><Link to={item.key}>{item.title}</Link></Menu.Item>)
+                        })}
                     </SubMenu>
                 )
-                item.children.map(item => {
-                    console.log(item.title)
-                    //this.getMenuNodes(this.menuList)
-                })
+                // item.children.map(item => {
+                //     console.log(item.title)
+                //     //this.getMenuNodes(this.menuList)
+                // })
             }
         })
     }
