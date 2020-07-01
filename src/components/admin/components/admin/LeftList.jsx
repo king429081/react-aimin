@@ -18,7 +18,7 @@ export default class LeftList extends React.Component {
     }
     getMenuNodes = (menuList) => {
         return menuList.map(item => {
-            console.log(item.title)
+            //console.log(item.title)
             if (!item.children) {
                 //console.log(item.title)
                 return (

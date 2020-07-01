@@ -156,7 +156,7 @@ export default class ShopIndex extends React.Component {
                             name="normal_login"
                             onFinish={this.onFinish}>
                             <Form.Item name="select">
-                                <Select placeholder='一级分类' style={{ width: 120 }} onChange={this.handleChange}>
+                                <Select defaultValue='0' style={{ width: 120 }} onChange={this.handleChange}>
                                     <Option value="0">一级分类</Option>
                                     {cartgroys.map((item)=>{
                                         return <Option value={[item.name,item._id]}>{item.name}</Option>

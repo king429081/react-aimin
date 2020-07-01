@@ -9,6 +9,7 @@ import UserAdmin from './items/03user/UserAdmin'
 import OrderAdmin from './items/06order/OrderAdmin'
 import ShopIndex from './items/02-1shop/ShopIndex1'
 import Product from './items/02-2shop/Products'
+import DetailProduct from './items/02-2shop/DetailProduct'
 import ChartControl from './items/05-1phone/ChartControl'
 import SecondShopIndex from './items/02-1shop/SecondShop'
 import Role from './items/04role/Role'
@@ -34,7 +35,7 @@ export default class  Admin extends React.Component{
                     </Sider>
                     <Layout>
                         <Heard></Heard>
-                        <Content>
+                        <Content >
                             <Switch>
                                 <Route path="/admin/home" component={Index}></Route>
                                 <Route path="/admin/user" component={UserAdmin}></Route>
@@ -44,11 +45,11 @@ export default class  Admin extends React.Component{
                                 <Route path="/admin/secondshop" component={SecondShopIndex}></Route>
                                 <Route path="/admin/order" component={OrderAdmin}></Route>
                                 <Route path="/admin/modifi" component={ModifyProduct}></Route>
+                                <Route path="/admin/detail" component={DetailProduct}></Route>
                                 <Route path="/admin/role" component={Role}></Route>
                                 <Redirect to="/admin/home"></Redirect>
                             </Switch>
                         </Content>
-                        <Footer></Footer>
                     </Layout>
                 </Layout>
             </div>
