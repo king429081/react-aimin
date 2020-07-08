@@ -1,7 +1,7 @@
 import React from 'react'
-import { Upload, Modal } from 'antd';
+import { Upload, Modal, message } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
-
+import {API_POST_DELIMG} from '../../../api/index'
 
 function getBase64(file) {
     return new Promise((resolve, reject) => {
@@ -15,19 +15,38 @@ function getBase64(file) {
 
 export default class PicturesWall extends React.Component {
     state = {
-      previewVisible: false,
+      previewVisible: false,//大图显示
       previewImage: '',
       previewTitle: '',
+      name:"",
       fileList: [
-        {
-          uid: '-1',
-          name: 'image.png',
-          status: 'done',
-          url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-        }
+        
       ],
     };
-  
+    componentDidMount(){
+      if(this.props.imgs){
+        this.initimgs()
+      }else{}
+    }
+    
+    initimgs=()=>{
+      let imgs =  this.props.imgs
+      imgs.map((item,index)=>{
+        this.state.fileList.push(
+          {
+            uid:-index,
+            name:item,
+            status:"done",
+            url:"http://localhost:5000/upload/"+item
+          }
+        ) 
+        this.setState({
+          fileList:this.state.fileList
+        })
+      })
+      //console.log(this.state.fileList)
+
+    }
     handleCancel = () => this.setState({ previewVisible: false });
   
     handlePreview = async file => {
@@ -41,8 +60,33 @@ export default class PicturesWall extends React.Component {
         previewTitle: file.name || file.url.substring(file.url.lastIndexOf('/') + 1),
       });
     };
+    
+    onRemove=async value=>{
+        //console.log(value,"..0")
+        let name = value.response.data.name
+        let res =await API_POST_DELIMG(name)
+        console.log(res)
+        if(res.data.status==0){
+            message.success("删除图片成功")
+        }
+    }
   
-    handleChange = ({ fileList }) => this.setState({ fileList });
+    handleChange = ({ file,fileList }) => {
+        //console.log(file,"upload",fileList)
+        if(file.status=="done"){
+            console.log(file.response)
+            if(file.response.status==0){
+                message.success("上传图片完成")
+                //console.log(fileList)
+            }else{
+                message.warn("上传图片失败")
+            }
+        }
+        
+        this.setState({ 
+            fileList,
+        });
+    }
   
     render() {
       const { previewVisible, previewImage, fileList, previewTitle } = this.state;
@@ -52,14 +96,16 @@ export default class PicturesWall extends React.Component {
           <div className="ant-upload-text">Upload</div>
         </div>
       );
-      return (
+      return ( 
         <div className="clearfix">
           <Upload
-            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+            action="/manage/img/upload" //图片上传地址
             listType="picture-card"
             fileList={fileList}
+            name="image"
             onPreview={this.handlePreview}
             onChange={this.handleChange}
+            onRemove={this.onRemove}  
           >
             {fileList.length >= 8 ? null : uploadButton}
           </Upload>

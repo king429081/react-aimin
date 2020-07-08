@@ -17,6 +17,7 @@ import userMessage from '../../userMessge'
 import ModifyProduct from './items/02-2shop/ModifyProduct'
 export default class  Admin extends React.Component{
     render(){
+        let userMenulist = this.props.location.userMenulist
         let user = userMessage.user
         const { Footer, Sider, Content } = Layout;
         if(!user || !user.data._id){
@@ -31,7 +32,7 @@ export default class  Admin extends React.Component{
                 <Layout style={{height:"100%"}}> 
                     <Sider>
                         <div className="top"><h3>商品管理系统</h3></div>
-                        <LeftList></LeftList>
+                        <LeftList userMenulist={userMenulist}></LeftList>
                     </Sider>
                     <Layout>
                         <Heard></Heard>

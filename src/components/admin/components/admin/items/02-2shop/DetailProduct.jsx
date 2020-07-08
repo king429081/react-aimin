@@ -20,7 +20,7 @@ export default class DetailProduct extends React.Component {
 //得到传的数据
     getrecrod=()=>{
         let record = this.props.location.state.record
-        console.log(record)
+        //console.log(record)
         this.getclassname(0)
         this.getclassname(record.pCategoryId)
         this.setState({
@@ -61,7 +61,7 @@ export default class DetailProduct extends React.Component {
                 <h3>商品价格：￥{record.price}</h3>
                 <h3>商品分类：{firstclass}=={sceondclass}</h3>
                 <h3>商品图片：{record.imgs.map(item => {
-                    return <img src={item} alt="" />
+                    return <img src={"http://localhost:5000/upload/"+item} alt="" />
                 })}</h3>
                 <h3>商品详情</h3> <div dangerouslySetInnerHTML={{__html:record.detail}}/>
             </div>

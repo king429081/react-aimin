@@ -120,9 +120,15 @@ export default class Product extends React.Component {
     }
 
     onClick=async value=>{
-        console.log(value)
-        let res = await API_POST_UPSTATUSPRODUCT(value._id,value.status)
-        console.log(res)
+        //console.log(value)
+        if(value.status==0){
+            let res = await API_POST_UPSTATUSPRODUCT(value._id,1)
+        //console.log(res)
+        }else{
+            let res = await API_POST_UPSTATUSPRODUCT(value._id,0)
+        //console.log(res)
+        }
+        this.getProducts(this.pageNum)
 
     }
     render() {

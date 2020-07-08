@@ -1,36 +1,70 @@
 import React from 'react'
 import './index/index.css'
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import {API_LOGIN} from '../api/index'
 import userMessage from '../../userMessge'
-import {saveUser,getUser,removeUser} from '../../localSAVE'
-import {Redirect} from 'react-router-dom'
+import menuList from '../admin/menuConfig'
+import userMenulist from '../admin/userMenulist'
+import {saveUser} from '../../localSAVE'
+
 
 export default class Login extends React.Component {
-    
+    state={
+        menulist:[]
+    }
+
     render() {
-        
-        
         const onFinish = values => {
             API_LOGIN(values).then((res)=>{
                 if(res.data.status==0){
                     userMessage.user = res.data;
-                    console.log(userMessage.user,"内存")
+                    //console.log(userMessage.user,"内存")
                     saveUser(res.data);
-                    this.props.history.push("/admin/home")
+                    message.success("登录成功")
+                    // menuList.map((menu,index)=>{
+                    //     //menuList=[]
+                    //     this.state.menulist.push({})
+                    //     res.data.data.role.menus.map(role=>{
+                    //         if(role==menu.key){
+                    //             //console.log(menu)
+                    //             this.state.menulist[index]={
+                    //                 icon:menu.icon,
+                    //                 key:menu.key,
+                    //                 title:menu.title,
+                    //                 children:[]
+                    //             }
+                    //             this.setState({menulist:this.state.menulist})
+                    //             if(menu.children){
+                    //                 console.log("123")
+                    //                 menu.children.map(child=>{
+                    //                     res.data.data.role.menus.map(roleS=>{
+                    //                         if(child.key==roleS){
+                    //                             this.state.menulist[index].children.push(child)
+                    //                             this.setState({menulist:this.state.menulist})
+                    //                             //console.log(this.state.menulist)
+                    //                         }
+                    //                     })
+                    //                 })
+                    //             }
+                    //         }
+                    //     })
+                    // })
+                    // let userMenulist = this.state.menulist
+                    // console.log(userMenulist)
+                    this.props.history.push({pathname:"/admin/home"})
                 }else if(res.data.status==1){
                     alert(res.data.msg)
                 }
-            }).catch((err)=>{
-                console.log(err)
             })
           };
           let user = userMessage.user
           console.log(user)
           if(user && user.data._id){
+              
               this.props.history.push("/admin")
-              console.log("111")
+              
+              //console.log("111")
           }
         return (
             <div className="login_index">
